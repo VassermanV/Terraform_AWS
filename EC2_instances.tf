@@ -29,7 +29,8 @@ resource "aws_instance" "linux_server" {
   instance_type = "t2.micro"
   subnet_id = "subnet-xxxxxxxxxxxxxxxxx"
   count = 2                                              # number of instances to be launched (accordingly you need to add more IP addresses) 
-  private_ip = var.private_ip[count.index]
+  private_ip = var.private_ip[count.index]               # if you launch 1 instance, specify only true or false 
+  vpc_security_group_ids = [ "sg-xxxxxxxxxxxxxx" ]
     
   root_block_device {
     volume_size = "20"
